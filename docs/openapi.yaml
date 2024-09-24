@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+    version: 1.0.0
+    title: AquaTrack API
+    license:
+        name: Apache 2.0
+        url: http://www.apache.org/licenses/LICENSE-2.0.html
+    description: >
+        This is a documentation of AquaTrack app tags
+tags:
+    - name: Users
+      description: Users operations.
+    - name: Water
+      description: Operations about water.
+servers:
+    - url: https://project-aquatrack-back.onrender.com
+paths:
+    /users/login:
+        post:
+            $ref: ../swagger/paths/auth/login/post.yaml
+    /users/register:
+        post:
+            $ref: ../swagger/paths/auth/register/post.yaml
+    /users/refresh:
+        post:
+            $ref: ../swagger/paths/auth/refresh/post.yaml
+    /users/logout:
+        post:
+            $ref: ../swagger/paths/auth/logout/post.yaml
+    /users/info:
+        get:
+            $ref: ../swagger/paths/auth/info/get.yaml
+        patch:
+            $ref: ../swagger/paths/auth/info/patch.yaml
+    /users/count:
+        get:
+            $ref: ../swagger/paths/auth/getUserCount/get.yaml
+    /users/photo:
+        patch:
+            $ref: ../swagger/paths/auth/photo/patch.yaml
+    # /users/info:
+    #   patch:
+    #     $ref: ../swagger/paths/auth/info/patch.yaml
+    /water:
+        post:
+            $ref: ../swagger/paths/water/create/post.yaml
+    /water/{id}:
+        get:
+            $ref: ../swagger/paths/water/get/get.yaml
+        patch:
+            $ref: ../swagger/paths/water/update/patch.yaml
+        delete:
+            $ref: ../swagger/paths/water/delete/delete.yaml
+    /water/day/{date}:
+        get:
+            $ref: ../swagger/paths/water/day/get.yaml
+    /water/week/{date}:
+        get:
+            $ref: ../swagger/paths/water/week/get.yaml
+    /water/month/{date}:
+        get:
+            $ref: ../swagger/paths/water/month/get.yaml
+components:
+    securitySchemes:
+        bearerAuth:
+            type: http
+            scheme: bearer
